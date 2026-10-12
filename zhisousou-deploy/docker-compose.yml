@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: zhisousou-web
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./html:/usr/share/nginx/html:ro
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/letsencrypt:ro
+    restart: unless-stopped
